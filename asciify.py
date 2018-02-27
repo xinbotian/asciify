@@ -1,10 +1,20 @@
 from PIL import Image
 import argparse
 
-def get_char(r,g,b,alpha = 256):
-    if alpha == 0:
-    length = len(ascii_char)
-    gray = int(0.2126 * r + 0.7152 * g + 0.0722 * b)
+#command line input var
+parser = argparse.ArgumentParser()
 
-    unit = (256.0 + 1)/length
-    return ascii_char[int(gray/unit)]
+parser.add_argument('file') #input file
+parser.add_argument('-o', '--output') #output file
+parser.add_argument('--width', type = int, default= 80) #output width
+parser.add_argument('--height', type = int, default = 80)# output height
+
+#get var
+args = parser.parse_args()
+
+IMG = args.file
+WIDTH = args.width
+HEIGHT = args.height
+OUTPUT = args.output
+
+ascii_char = list("$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'. ")
